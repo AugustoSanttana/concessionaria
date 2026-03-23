@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil do Cabeleireiro</title>
+
+  <link rel="stylesheet" href="../css/perfil_cabeleireiro.css">
+  <script defer src="../java/perfil_cabeleireiro.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="barber-name">DREAM BARBER</h1>
+    <a href="home_cabeleireiro.html" class="btn-agendar">Início</a>
+    <button onclick="logout()" class="btn-sair">Sair</button>
+  </header>
+
+  <main class="container">
+
+    <!-- PERFIL DO CABELEIREIRO -->
+    <section class="perfil-card">
+      <div class="foto-perfil">
+        <img id="fotoUsuario" src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Foto do usuário" />
+      </div>
+      <div class="dados-usuario">
+        <h2>Meu Perfil</h2>
+        <p><strong>Nome:</strong> <span id="nomeUsuario">Carregando...</span></p>
+        <p><strong>Email:</strong> <span id="emailUsuario">Carregando...</span></p>
+        <p><strong>Nota Média:</strong> <span id="notaMedia">Carregando...</span> ⭐</p>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS CADASTRADOS -->
+    <section class="agendamentos">
+      <h2>Serviços Cadastrados</h2>
+      <ul id="servicos" class="lista-agendamentos">
+        <li>Carregando serviços...</li>
+      </ul>
+    </section>
+
+    <!-- AGENDAMENTOS -->
+    <section class="agendamentos">
+      <h2>Meus Agendamentos</h2>
+      <div id="listaAgendamentos" class="lista-agendamentos">
+        <p>Carregando agendamentos...</p>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

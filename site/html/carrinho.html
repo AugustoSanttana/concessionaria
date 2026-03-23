@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Carrinho - Dream Barber</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/carrinho.css">
+
+  <script defer src="../java/carrinho.js"></script>
+</head>
+<body>
+  <header class="topo">
+    <div class="logo">DREAM BARBER</div>
+    <nav class="menu">
+      <a href="home_usuario.html">Home</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="carrinho.html" class="ativo">
+        Carrinho (<span id="cart-count">0</span>)
+      </a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Meu Carrinho</h1>
+
+    <section id="carrinho-itens" class="carrinho-itens">
+      <!-- Itens do carrinho vão entrar aqui via JS -->
+    </section>
+
+    <section id="carrinho-resumo" class="carrinho-resumo">
+      <p>Total: <span id="carrinho-total">R$ 0,00</span></p>
+      <button id="btn-ir-pagamento">Ir para pagamento</button>
+    </section>
+  </main>
+</body>
+</html>
+

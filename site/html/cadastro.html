@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro Barbearia</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/cadastro.css">
+  <script defer src="../java/cadastro.js"></script>
+</head>
+<body>
+  <h1 class="barber-name">DREAM BARBER</h1>
+
+  <div class="cadastro-wrapper">
+    <img src="https://cdn-icons-png.flaticon.com/512/1085/1085825.png" alt="Tesoura" class="icon-left">
+
+    <div class="cadastro-container">
+      <h2>Cadastro</h2>
+      <form id="cadastroForm">
+
+        <div class="input-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Digite seu Nome" required>
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" placeholder="Digite seu Email" required>
+        </div>
+
+        <div class="input-group">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+        </div>
+
+        <div class="input-group">
+          <label for="cpf">CPF</label>
+          <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" required>
+        </div>
+
+        <div class="input-group">
+          <label for="endereco">Endereço</label>
+          <input type="text" id="endereco" name="endereco" placeholder="Digite seu endereço" required>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/1085/1085825.png" alt="Tesoura" class="icon-right">
+  </div>
+</body>
+</html>

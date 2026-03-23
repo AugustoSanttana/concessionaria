@@ -1,0 +1,167 @@
+:root {
+  --azul: #c49a6c;
+  --azul-claro: #e6f0fa;
+  --cinza: #f3f3f3;
+  --texto: #333;
+  --borda: #ddd;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--cinza);
+  margin: 0;
+  padding: 0;
+  color: var(--texto);
+}
+
+.topbar {
+  background-color: var(--azul);
+  color: white;
+  padding: 1rem 2rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.topbar2 {
+  background-color: var(--azul);
+  padding: 1rem 2rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-agendar {
+  display: inline-block;
+  background-color: white;
+  color: var(--azul);
+  padding: 12px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-agendar:hover {
+  background-color: var(--azul-claro);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.perfil-card {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  margin-bottom: 30px;
+  gap: 30px;
+}
+
+.foto-perfil {
+  text-align: center;
+}
+
+.foto-perfil img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--azul);
+}
+
+.btn-pequeno {
+  margin-top: 10px;
+  padding: 6px 10px;
+  background-color: var(--azul);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.btn-pequeno:hover {
+  background-color: #005b9f;
+}
+
+.dados-usuario h2 {
+  margin: 0 0 10px;
+  color: var(--azul);
+}
+
+.agendamentos {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.agendamentos h2 {
+  border-bottom: 2px solid var(--azul-claro);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.lista-agendamentos {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card-agendamento {
+  border: 1px solid var(--borda);
+  border-left: 6px solid var(--azul);
+  border-radius: 8px;
+  padding: 15px;
+  background-color: var(--azul-claro);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-info {
+  flex: 1;
+}
+
+.card-info p {
+  margin: 3px 0;
+}
+
+.status {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.status.pendente {
+  color: #f0ad4e;
+}
+.status.concluido {
+  color: #28a745;
+}
+.status.cancelado {
+  color: #d9534f;
+}
+
+.btn-cancelar {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.btn-cancelar:hover {
+  background-color: #c9302c;
+}
