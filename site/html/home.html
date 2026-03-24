@@ -3,29 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dream Barber</title>
+  <title>São Paulo Customs</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Montserrat:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <div class="logo">DB</div>
         <div>
-          <h1>Dream Barber</h1>
-          <p class="tag">Corte, barba e estilo</p>
+          <h1>São Paulo Customs</h1>
         </div>
       </div>
       <nav class="main-nav">
         <a href="#inicio">Início</a>
-        <a href="produtos.html">Produtos</a>
-        <a href="login.html" class="btn-login">Login</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#agenda">Agendar</a>
+        <a href="compra.html">Compre</a>
+        <a href="aluguel.html">Alugue</a>
         <a href="#contato" class="btn-outline">Contato</a>
         <a href="carrinho.html">Carrinho</a>
+        <a href="login.html" class="btn-login">Login</a>
       </nav>
     </div>
   </header>
@@ -34,16 +31,15 @@
     <section id="inicio" class="hero">
       <div class="container hero-inner">
         <div class="hero-text">
-          <h2>Bem-vindo à Dream Barber</h2>
-          <p>Atmosfera clássica, profissionais experientes e cortes que combinam com você.</p>
-          <a href="#agenda" class="btn-primary">Agende seu horário</a>
+          <h2>Bem-vindo à São Paulo Customs</h2>
+          <p>Atmosfera elite, profissionais experientes e carros dos seu sonhos.</p>
         </div>
         <div class="hero-image" aria-hidden="true"></div>
       </div>
     </section>
 
-    <section id="servicos" class="services container">
-      <h3 class="section-title">Nossos Serviços</h3>
+    <section id="carros" class="carros container">
+      <h3 class="section-title">Nossos Carros</h3>
       <div class="grid-3">
         <div class="card">
           <h4>Corte Masculino</h4>
@@ -63,12 +59,12 @@
       </div>
     </section>
 
-    <section id="agenda" class="booking container">
-      <h3 class="section-title">Agende Online</h3>
-      <p>Escolha data e horário. Atendimento rápido e pontual.</p>
-      <form class="booking-form" onsubmit="alert('Formulário simulado — implemente envio real.'); return false;">
-        <select name="servico" required>
-          <option value="">Selecione o serviço</option>
+    <section id="alugue" class="aluguel container">
+      <h3 class="section-title">Alugue Online</h3>
+      <p>Escolha o carro que você gostaria de alugar.</p>
+      <form class="aluguel-form" onsubmit="alert('Formulário simulado — implemente envio real.'); return false;">
+        <select name="alugue" required>1
+          <option value="">Escolha o seu carro!</option>
           <option value="corte">Corte Masculino</option>
           <option value="barba">Barba Completa</option>
           <option value="combo">Combo</option>
@@ -92,27 +88,7 @@
 
 
 
-    <script>
-      document.getElementById('ano').textContent = new Date().getFullYear();
-    </script>
-  <footer class="avaliacao-container">
-      <h3>Avalie a Barbearia</h3>
-
-      <div class="usuario-info">
-          <span id="nomeUsuarioFooter">Usuário: Fulano</span>
-      </div>
-
-      <div class="stars" id="stars">
-          ★★★★★
-      </div>
-
-      <textarea id="comentario" placeholder="Escreva sua avaliação..." maxlength="300"></textarea>
-
-      <button id="btnEnviarAvaliacao">Enviar avaliação</button>
-
-      <p id="msgAvaliacao" class="msg"></p>
-  </footer>
-
+    
 
 </body>
 </html>
