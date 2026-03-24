@@ -10,12 +10,8 @@ class Usuario(db.Model):
     senha = db.Column(db.String(600), nullable=False)
     cpf = db.Column(db.String(11), unique=True, nullable=False)
     endereco = db.Column(db.String(100), nullable=False)
+    cnh = db.Column(db.String(20), unique=True, nullable=False)
 
-    avaliacoes = db.relationship(
-        "Avaliacao",
-        back_populates="usuario",
-        cascade="all, delete-orphan"
-    )
 
 
     def to_dict(self):
@@ -25,5 +21,6 @@ class Usuario(db.Model):
             "email": self.email,
             "senha": self.senha,
             "cpf": self.cpf,
-            "endereco": self.endereco
+            "endereco": self.endereco,
+            "cnh": self.cnh
         }
