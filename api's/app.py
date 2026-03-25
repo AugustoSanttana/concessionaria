@@ -1,6 +1,6 @@
 from flask import Flask, request, send_from_directory
 from src.config.data_base import db, init_db
-from src.routes import user_routes, agendamento_routes, cabeleireiro_routes, produtos_routes, avaliacao_routes
+from src.routes import user_routes, agendamento_routes, cabeleireiro_routes, veiculos_routes, avaliacao_routes
 from flask_cors import CORS
 from flask_migrate import Migrate
 import pymysql
@@ -40,7 +40,7 @@ def create_app():
     app.register_blueprint(user_routes, url_prefix="/user_routes")
     app.register_blueprint(agendamento_routes, url_prefix="/agendamento")
     app.register_blueprint(cabeleireiro_routes, url_prefix="/cabeleireiro")
-    app.register_blueprint(produtos_routes, url_prefix="/produto")
+    app.register_blueprint(veiculos_routes, url_prefix="/veiculo")
     app.register_blueprint(avaliacao_routes, url_prefix="/avaliacao")
 
     @app.route('/uploads/<path:filename>')

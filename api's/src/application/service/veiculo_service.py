@@ -1,8 +1,8 @@
-from src.domain.produto import ProdutoDomain
-from src.infrastructure.model_produto import Produto
+from src.domain.veiculo import VeiculoCompraDomain, VeiculoAluguelDomain
+from src.infrastructure.model_veiculo import Veiculo
 from src.config.data_base import db
 
-class ProdutoService:    
+class VeiculoService:    
     @staticmethod
     def create_produto(nome, preco, quantidade, imagem_url=None):
         produto_novo = ProdutoDomain(nome, preco, quantidade, imagem_url)

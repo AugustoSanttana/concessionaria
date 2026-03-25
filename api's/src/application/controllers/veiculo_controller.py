@@ -2,12 +2,12 @@ from flask import request, jsonify, make_response, send_from_directory
 from werkzeug.utils import secure_filename
 import os
 from src.config.data_base import db
-from src.application.service.produto_service import ProdutoService
+from src.application.service.veiculo_service import VeiculoService
 
 UPLOAD_FOLDER = os.path.join(os.getcwd(), "uploads")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-class ProdutoController:
+class VeiculoController:
     @staticmethod
     def cadastrar_produto():
         try: 

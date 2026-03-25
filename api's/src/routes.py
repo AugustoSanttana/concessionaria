@@ -1,7 +1,7 @@
 from src.application.controllers.user_controller import UserController
 from src.application.controllers.agendamento_controller import AgendamentoController
 from src.application.controllers.cabeleireiro_controller import CabeleireiroController
-from src.application.controllers.produto_controller import ProdutoController
+from src.application.controllers.veiculo_controller import VeiculoController
 from src.application.controllers.avaliacao_controller import AvaliacaoController
 from flask import jsonify, make_response, send_from_directory
 from flask import Blueprint
@@ -14,7 +14,7 @@ from flask import request
 user_routes = Blueprint("user_routes", __name__)
 agendamento_routes = Blueprint("agendamento_routes", __name__)
 cabeleireiro_routes = Blueprint("cabeleireiro_routes", __name__)
-produtos_routes = Blueprint("produtos_routes", __name__)
+veiculos_routes = Blueprint("veiculos_routes", __name__)
 avaliacao_routes = Blueprint("avaliacao_routes", __name__)
 
 #-------------------------------------#
@@ -86,25 +86,25 @@ def concluir_agendamento_cabeleireiro(agendamento_id):
 #-------------------------------------
 
 
-@produtos_routes.route("/listar", methods=["GET"])
+@veiculos_routes.route("/listar", methods=["GET"])
 def listar_produtos():
-    return ProdutoController.listar_produtos()
+    return VeiculoController.listar_veiculos()
 
-@produtos_routes.route("/cadastrar", methods=["POST"])
+@veiculos_routes.route("/cadastrar", methods=["POST"])
 def cadastrar_produto():
-    return ProdutoController.cadastrar_produto()
+    return VeiculoController.cadastrar_veiculo()
 
-@produtos_routes.route("/<int:id>", methods=["GET"])
+@veiculos_routes.route("/<int:id>", methods=["GET"])
 def get_produto(id):
-    return ProdutoController.get_produto(id)
+    return VeiculoController.get_veiculo(id)
 
-@produtos_routes.route("/<int:id>", methods=["PUT"])
+@veiculos_routes.route("/<int:id>", methods=["PUT"])
 def atualizar_produto(id):
-    return ProdutoController.atualizar
+    return VeiculoController.atualizar_veiculo(id)
 
-@produtos_routes.route("/<int:id>", methods=["DELETE"])
+@veiculos_routes.route("/<int:id>", methods=["DELETE"])
 def deletar_produto(id):
-    return ProdutoController.deletar_produto
+    return VeiculoController.deletar_veiculo(id)
 
 #-------------------------------------
 
