@@ -1,14 +1,10 @@
 from flask import request, jsonify, make_response
 from src.application.service.user_service import UserService
-from flask import request, jsonify
 from src.infrastructure.model_usuario import Usuario
 from src.config.data_base import db
 from werkzeug.security import check_password_hash
 from src.config.auth import gerar_token
 from src.config.auth import verificar_token
-from src.infrastructure.model_agendamento import Agendamento
-
-
 
 
 class UserController:
@@ -19,24 +15,36 @@ class UserController:
         email = data.get('email')
         senha = data.get('senha')
         cpf = data.get('cpf')
+        telefone = data.get('telefone')
         endereco = data.get('endereco')
+        cep = data.get('cep')
+        data_nascimento = data.get('data_nascimento')
+        renda_mensal = data.get('renda_mensal')
+        cnh = data.get('cnh')
+        categoria_cnh = data.get('categoria_cnh')
+        profissao = data.get('profissao')
 
-        if not nome or not email or not senha or not cpf or not endereco:
+        if not nome or not email or not senha or not cpf or not telefone or not endereco or not cep or not data_nascimento:
             return make_response(jsonify({"erro": "Campos obrigatórios ausentes"}), 400)
         
-        user = UserService.create_user(nome, email, senha, cpf, endereco)
+        user = UserService.create_user(
+            nome=nome, email=email, senha=senha, cpf=cpf,
+            telefone=telefone, endereco=endereco, cep=cep,
+            data_nascimento=data_nascimento, renda_mensal=renda_mensal,
+            cnh=cnh, categoria_cnh=categoria_cnh, profissao=profissao
+        )
         return make_response(jsonify({
-            "mensagem": "User salvo com sucesso",
-            "usuarios": user.to_dict()
-        }), 200)
+            "mensagem": "Cliente cadastrado com sucesso",
+            "cliente": user.to_dict()
+        }), 201)
     
     @staticmethod
     def get_user(idUser):
         user = UserService.get_user(idUser)
         if not user:
-            return make_response(jsonify({"erro": "Usuário não encontrado"}), 404)
+            return make_response(jsonify({"erro": "Cliente não encontrado"}), 404)
         return make_response(jsonify({
-            "usuario": user.to_dict()
+            "cliente": user.to_dict()
         }), 200)
     
     @staticmethod
@@ -51,10 +59,10 @@ class UserController:
 
         token = gerar_token(usuario.id)
         return jsonify({
-        "token": token,
-        "id": usuario.id,
-        "nome": usuario.nome
-})
+            "token": token,
+            "id": usuario.id,
+            "nome": usuario.nome
+        })
     
     @staticmethod
     @verificar_token
@@ -62,29 +70,6 @@ class UserController:
         usuario = Usuario.query.get(request.user_id)
 
         if not usuario:
-            return jsonify({"erro": "Usuário não encontrado"}), 404
+            return jsonify({"erro": "Cliente não encontrado"}), 404
 
-        agendamentos = Agendamento.query.filter_by(cliente_id=usuario.id).all()
-
-        agendamentos_data = [
-            {
-                "id": ag.id,
-                "profissional": ag.cabeleireiro_agendamento.nome if ag.cabeleireiro_agendamento else None,
-                "servico": ag.servico,
-                "data": ag.data.strftime("%d/%m/%Y"),
-                "hora": ag.hora.strftime("%H:%M"),
-                "status": ag.status
-            }
-            for ag in agendamentos
-        ]
-
-        usuario_data = {
-            "id": usuario.id,
-            "nome": usuario.nome,
-            "email": usuario.email,
-            "cpf": usuario.cpf,
-            "endereco": usuario.endereco,
-            "agendamentos": agendamentos_data
-        }
-
-        return jsonify(usuario_data), 200
+        return jsonify(usuario.to_dict()), 200

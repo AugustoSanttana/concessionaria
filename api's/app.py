@@ -1,6 +1,6 @@
 from flask import Flask, request, send_from_directory
 from src.config.data_base import db, init_db
-from src.routes import user_routes, agendamento_routes, cabeleireiro_routes, veiculos_routes, avaliacao_routes
+from src.routes import cliente_routes, vendedor_routes, veiculos_routes
 from flask_cors import CORS
 from flask_migrate import Migrate
 import pymysql
@@ -17,10 +17,10 @@ def create_app():
         }
     })
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:mpfg2005@localhost/barbearia_db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:mpfg2005@localhost/concessionaria_db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    db_name = 'barbearia_db'
+    db_name = 'concessionaria_db'
     conn = pymysql.connect(host='localhost', user='root', password='mpfg2005')
     cursor = conn.cursor()
     cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name}")
@@ -37,11 +37,9 @@ def create_app():
 
     migrate = Migrate(app, db)
 
-    app.register_blueprint(user_routes, url_prefix="/user_routes")
-    app.register_blueprint(agendamento_routes, url_prefix="/agendamento")
-    app.register_blueprint(cabeleireiro_routes, url_prefix="/cabeleireiro")
+    app.register_blueprint(cliente_routes, url_prefix="/cliente")
+    app.register_blueprint(vendedor_routes, url_prefix="/vendedor")
     app.register_blueprint(veiculos_routes, url_prefix="/veiculo")
-    app.register_blueprint(avaliacao_routes, url_prefix="/avaliacao")
 
     @app.route('/uploads/<path:filename>')
     def uploaded_file(filename):

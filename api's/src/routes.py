@@ -1,117 +1,99 @@
 from src.application.controllers.user_controller import UserController
-from src.application.controllers.agendamento_controller import AgendamentoController
-from src.application.controllers.cabeleireiro_controller import CabeleireiroController
 from src.application.controllers.veiculo_controller import VeiculoController
-from src.application.controllers.avaliacao_controller import AvaliacaoController
+from src.application.controllers.vendedor_controller import VendedorController
 from flask import jsonify, make_response, send_from_directory
 from flask import Blueprint
 from flask import request
 
 
-
-
-
-user_routes = Blueprint("user_routes", __name__)
-agendamento_routes = Blueprint("agendamento_routes", __name__)
-cabeleireiro_routes = Blueprint("cabeleireiro_routes", __name__)
+cliente_routes = Blueprint("cliente_routes", __name__)
+vendedor_routes = Blueprint("vendedor_routes", __name__)
 veiculos_routes = Blueprint("veiculos_routes", __name__)
-avaliacao_routes = Blueprint("avaliacao_routes", __name__)
 
 #-------------------------------------#
+# CLIENTE (usuário)
+#-------------------------------------#
 
-
-@user_routes.route("/<int:idUser>", methods=["GET"])
-def get_user(idUser):
+@cliente_routes.route("/<int:idUser>", methods=["GET"])
+def get_cliente(idUser):
     return UserController.get_user(idUser)
-    
-@user_routes.route("/cadastrar", methods=["POST"])
-def register_user():
+
+@cliente_routes.route("/cadastrar", methods=["POST"])
+def cadastrar_cliente():
     return UserController.register_user()
 
-@user_routes.route("/login", methods=["POST"])
-def login():
+@cliente_routes.route("/login", methods=["POST"])
+def login_cliente():
     return UserController.login()
 
-@user_routes.route("/perfil", methods=["GET"])
-def perfil_usuario():
+@cliente_routes.route("/perfil", methods=["GET"])
+def perfil_cliente():
     return UserController.perfil_usuario()
 
 #-------------------------------------#
+# VENDEDOR
+#-------------------------------------#
 
+@vendedor_routes.route("/cadastrar", methods=["POST"])
+def cadastrar_vendedor():
+    return VendedorController.cadastrar_vendedor()
 
-@agendamento_routes.route("/listar", methods=["GET"])
-def listar_agendamentos():
-    return AgendamentoController.listar_agendamentos()
+@vendedor_routes.route("/login", methods=["POST"])
+def login_vendedor():
+    return VendedorController.login()
 
-@agendamento_routes.route("/criar", methods=["POST"])
-def criar_agendamento():
-    return AgendamentoController.criar_agendamento()
+@vendedor_routes.route("/perfil", methods=["GET"])
+def perfil_vendedor():
+    return VendedorController.perfil_vendedor()
 
-@agendamento_routes.route("/<int:id>/concluir", methods=["PUT"])
-def concluir_agendamento(id):
-    return AgendamentoController.concluir_agendamento(id)
+@vendedor_routes.route("/listar", methods=["GET"])
+def listar_vendedores():
+    return VendedorController.listar_vendedores()
 
-@agendamento_routes.route("/cancelar/<int:agendamento_id>", methods=["PUT"])
-def cancelar_agendamento(agendamento_id):
-    return AgendamentoController.cancelar_agendamento(agendamento_id)
+#-------------------------------------#
+# VEÍCULOS - COMPRA
+#-------------------------------------#
 
-#-------------------------------------
+@veiculos_routes.route("/compra/listar", methods=["GET"])
+def listar_veiculos_compra():
+    return VeiculoController.listar_veiculos_compra()
 
-@cabeleireiro_routes.route("/cadastrar", methods=["POST"])
-def cadastrar_cabeleireiro():
-    return CabeleireiroController.cadastrar_cabeleireiro()
+@veiculos_routes.route("/compra/cadastrar", methods=["POST"])
+def cadastrar_veiculo_compra():
+    return VeiculoController.cadastrar_veiculo_compra()
 
-@cabeleireiro_routes.route("/listar", methods=["GET"])
-def listar_cabeleireiros():
-    return CabeleireiroController.listar_cabeleireiros()
+@veiculos_routes.route("/compra/<int:id>", methods=["GET"])
+def get_veiculo_compra(id):
+    return VeiculoController.get_veiculo_compra(id)
 
-@cabeleireiro_routes.route("/servico/cadastrar", methods=["POST"])
-def cadastrar_servico():
-    return CabeleireiroController.cadastrar_servico()
+@veiculos_routes.route("/compra/<int:id>", methods=["PUT"])
+def atualizar_veiculo_compra(id):
+    return VeiculoController.atualizar_veiculo_compra(id)
 
-@cabeleireiro_routes.route("/login", methods=["POST"])
-def login_cabeleireiro():
-    return CabeleireiroController.login()
+@veiculos_routes.route("/compra/<int:id>", methods=["DELETE"])
+def deletar_veiculo_compra(id):
+    return VeiculoController.deletar_veiculo_compra(id)
 
-@cabeleireiro_routes.route("/perfil", methods=["GET"])
-def perfil_cabeleireiro():
-    return CabeleireiroController.perfil_cabeleireiro()
+#-------------------------------------#
+# VEÍCULOS - ALUGUEL
+#-------------------------------------#
 
-@cabeleireiro_routes.route("/agendamentos/<int:agendamento_id>/concluir", methods=["PUT"])
-def concluir_agendamento_cabeleireiro(agendamento_id):
-    return CabeleireiroController.concluir_agendamento(agendamento_id)
+@veiculos_routes.route("/aluguel/listar", methods=["GET"])
+def listar_veiculos_aluguel():
+    return VeiculoController.listar_veiculos_aluguel()
 
+@veiculos_routes.route("/aluguel/cadastrar", methods=["POST"])
+def cadastrar_veiculo_aluguel():
+    return VeiculoController.cadastrar_veiculo_aluguel()
 
+@veiculos_routes.route("/aluguel/<int:id>", methods=["GET"])
+def get_veiculo_aluguel(id):
+    return VeiculoController.get_veiculo_aluguel(id)
 
-#-------------------------------------
+@veiculos_routes.route("/aluguel/<int:id>", methods=["PUT"])
+def atualizar_veiculo_aluguel(id):
+    return VeiculoController.atualizar_veiculo_aluguel(id)
 
-
-@veiculos_routes.route("/listar", methods=["GET"])
-def listar_produtos():
-    return VeiculoController.listar_veiculos()
-
-@veiculos_routes.route("/cadastrar", methods=["POST"])
-def cadastrar_produto():
-    return VeiculoController.cadastrar_veiculo()
-
-@veiculos_routes.route("/<int:id>", methods=["GET"])
-def get_produto(id):
-    return VeiculoController.get_veiculo(id)
-
-@veiculos_routes.route("/<int:id>", methods=["PUT"])
-def atualizar_produto(id):
-    return VeiculoController.atualizar_veiculo(id)
-
-@veiculos_routes.route("/<int:id>", methods=["DELETE"])
-def deletar_produto(id):
-    return VeiculoController.deletar_veiculo(id)
-
-#-------------------------------------
-
-@avaliacao_routes.route("/", methods=["POST"])
-def criar_avaliacao():
-    return AvaliacaoController.criar_avaliacao()
-
-@avaliacao_routes.route("/listar", methods=["GET"])
-def listar_avaliacoes():
-    return AvaliacaoController.listar_avaliacoes()
+@veiculos_routes.route("/aluguel/<int:id>", methods=["DELETE"])
+def deletar_veiculo_aluguel(id):
+    return VeiculoController.deletar_veiculo_aluguel(id)
