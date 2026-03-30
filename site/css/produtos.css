@@ -1,0 +1,182 @@
+/* ===== Reset básico ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Quicksand", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f5f7;
+  color: #222;
+}
+
+/* ===== Header / Menu ===== */
+.topo {
+  width: 100%;
+  padding: 16px 32px;
+  background: #111827;
+  color: #c49a6c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 1.1rem;
+}
+
+.menu {
+  display: flex;
+  gap: 16px;
+}
+
+.menu a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.menu a:hover {
+  background: #1f2937;
+  color: #ffffff;
+}
+
+.menu a.ativo {
+  background: #f97316;
+  color: #111827;
+}
+
+/* ===== Container principal ===== */
+.container {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.container h1 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.container > p {
+  margin-bottom: 24px;
+  color: #4b5563;
+}
+
+/* ===== Lista de Produtos ===== */
+.lista-produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* ===== Card de Produto ===== */
+.produto-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.produto-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10);
+}
+
+.produto-imagem {
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.produto-nome {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.produto-preco {
+  font-weight: 700;
+  color: #16a34a;
+  margin-bottom: 12px;
+}
+
+/* ===== Controles do produto ===== */
+.produto-controles {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.produto-controles label {
+  font-size: 0.9rem;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.produto-qtd-input {
+  width: 70px;
+  padding: 4px 6px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.btn-add-carrinho {
+  background: #f97316;
+  color: #111827;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 4px 10px rgba(249, 115, 22, 0.35);
+}
+
+.btn-add-carrinho:hover {
+  background: #ea580c;
+}
+
+.btn-add-carrinho:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(249, 115, 22, 0.45);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 600px) {
+  .topo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+  }
+}
+

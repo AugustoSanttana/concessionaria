@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>São Paulo Customs</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Montserrat:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/home.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div>
+          <h1>São Paulo Customs</h1>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="#inicio">Início</a>
+        <a href="compra.html">Compre</a>
+        <a href="aluguel.html">Alugue</a>
+        <a href="#contato" class="btn-outline">Contato</a>
+        <a href="carrinho.html">Carrinho</a>
+        <a href="login.html" class="btn-login">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h2>Bem-vindo à São Paulo Customs</h2>
+          <p>Atmosfera elite, profissionais experientes e carros dos seu sonhos.</p>
+        </div>
+        <div class="hero-image" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section id="carros" class="carros container">
+      <h3 class="section-title">Nossos Carros</h3>
+      <div class="grid-3">
+        <div class="card">
+          <h4>Corte Masculino</h4>
+          <p>Modelagem, aplicação de produtos e finalização personalizada.</p>
+          <span class="price">R$ 45</span>
+        </div>
+        <div class="card">
+          <h4>Barba Completa</h4>
+          <p>Barbeio, limpeza e hidratação da pele.</p>
+          <span class="price">R$ 30</span>
+        </div>
+        <div class="card">
+          <h4>Combo Corte + Barba</h4>
+          <p>Melhor custo-benefício, atendimento prioritário.</p>
+          <span class="price">R$ 70</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="alugue" class="aluguel container">
+      <h3 class="section-title">Alugue Online</h3>
+      <p>Escolha o carro que você gostaria de alugar.</p>
+      <form class="aluguel-form" onsubmit="alert('Formulário simulado — implemente envio real.'); return false;">
+        <select name="alugue" required>1
+          <option value="">Escolha o seu carro!</option>
+          <option value="corte">Corte Masculino</option>
+          <option value="barba">Barba Completa</option>
+          <option value="combo">Combo</option>
+        </select>
+        <input type="datetime-local" name="datahora" required>
+        <button class="btn-primary" type="submit">Confirmar</button>
+      </form>
+    </section>
+
+    <section id="contato" class="contact container">
+      <h3 class="section-title">Contato</h3>
+      <div class="contact-grid">
+        <div>
+          <p><strong>Endereço:</strong> R. Cubatão, 726 - Vila Mariana, São Paulo - SP</p>
+          <p><strong>Horário:</strong> Ter-Sáb 09:00–19:00</p>
+          <p><strong>Telefone:</strong> (11) 9 9999-9999</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+    
+
+</body>
+</html>

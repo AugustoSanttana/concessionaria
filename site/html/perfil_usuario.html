@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Perfil</title>
+  <link rel="stylesheet" href="../css/perfil_usuario.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Meu Perfil</h1>
+  </header>
+    <header class="topbar2">
+   <a href="home_usuario.html" class="btn-agendar">Início</a>
+  </header>
+
+  <main class="container">
+    <section class="perfil-card">
+      <div class="foto-perfil">
+        <img id="fotoUsuario" src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Foto do usuário" />
+        <button class="btn-pequeno" id="trocarFoto">Alterar foto</button>
+      </div>
+
+      <div class="dados-usuario">
+        <h2 id="nomeUsuario">Carregando...</h2>
+        <p><strong>Email:</strong> <span id="emailUsuario"></span></p>
+        <p><strong>CPF:</strong> <span id="cpfUsuario"></span></p>
+        <p><strong>Endereço:</strong> <span id="enderecoUsuario"></span></p>
+      </div>
+    </section>
+
+    <section class="agendamentos">
+      <h2>Meus Agendamentos</h2>
+      <div class="lista-agendamentos" id="listaAgendamentos">
+        <p>Carregando agendamentos...</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="../java/perfil_usuario.js"></script>
+</body>
+</html>
