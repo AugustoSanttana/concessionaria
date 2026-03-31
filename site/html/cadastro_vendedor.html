@@ -1,155 +1,44 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cadastro de Vendedor | São Paulo Customs</title>
+<div class="input-group">
+  <label for="cpf">CPF</label>
+  <input type="text" id="cpf" name="cpf" placeholder="Digite o CPF" required>
+</div>
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<div class="input-group">
+  <label for="telefone">Telefone</label>
+  <input type="text" id="telefone" name="telefone" placeholder="Digite o telefone" required>
+</div>
 
-  <link rel="stylesheet" href="../css/cadastro_vendedor.css">
-  <script defer src="../java/cadastro_vendedor.js"></script>
-</head>
-<body>
+<div class="input-group">
+  <label for="endereco">Endereço</label>
+  <input type="text" id="endereco" name="endereco" placeholder="Digite o endereço" required>
+</div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="home.html" class="brand-link">
-          <span class="brand-script">São Paulo</span>
-          <span class="brand-title">Customs</span>
-        </a>
-      </div>
+<div class="input-group">
+  <label for="cep">CEP</label>
+  <input type="text" id="cep" name="cep" placeholder="Digite o CEP" required>
+</div>
 
-      <nav class="main-nav">
-        <a href="home.html">Home</a>
-        <a href="login.html">Login</a>
-      </nav>
-    </div>
-  </header>
+<div class="input-group">
+  <label for="data_nascimento">Data de nascimento</label>
+  <input type="date" id="data_nascimento" name="data_nascimento" required>
+</div>
 
-  <main class="cadastro-page">
-    <section class="cadastro-section container">
-      <div class="cadastro-wrapper">
+<div class="input-group">
+  <label for="codigo_vendedor">Código do vendedor</label>
+  <input type="text" id="codigo_vendedor" name="codigo_vendedor" placeholder="Ex: VEND001" required>
+</div>
 
-        <!-- LADO ESQUERDO -->
-        <div class="cadastro-info">
-          <p class="eyebrow">ÁREA DO VENDEDOR</p>
+<div class="input-group">
+  <label for="comissao_percentual">Comissão (%)</label>
+  <input type="number" id="comissao_percentual" name="comissao_percentual" step="0.01" placeholder="Ex: 5" required>
+</div>
 
-          <h1>
-            Cadastre-se como vendedor e anuncie seus veículos.
-          </h1>
+<div class="input-group">
+  <label for="meta_mensal">Meta mensal</label>
+  <input type="number" id="meta_mensal" name="meta_mensal" step="0.01" placeholder="Opcional">
+</div>
 
-          <p class="description">
-            Crie sua conta profissional para acessar a área do vendedor,
-            cadastrar carros e gerenciar seus anúncios na plataforma.
-          </p>
-
-          <div class="info-cards">
-            <div class="mini-card">
-              <span>🚗</span>
-              <p>Cadastre veículos</p>
-            </div>
-
-            <div class="mini-card">
-              <span>📊</span>
-              <p>Gerencie anúncios</p>
-            </div>
-
-            <div class="mini-card">
-              <span>💼</span>
-              <p>Área exclusiva</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- LADO DIREITO -->
-        <div class="cadastro-card">
-          <div class="card-top">
-            <h2>Criar conta de vendedor</h2>
-            <p>Preencha os dados abaixo para continuar</p>
-          </div>
-
-          <form id="cadastro-vendedor-form" class="cadastro-form">
-
-            <!-- Nome -->
-            <div class="input-group">
-              <label for="nome">Nome completo</label>
-              <input
-                type="text"
-                id="nome"
-                name="nome"
-                placeholder="Digite seu nome completo"
-                required
-              >
-            </div>
-
-            <!-- Email -->
-            <div class="input-group">
-              <label for="email">E-mail</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="seunome@vendedor"
-                required
-              >
-            </div>
-
-            <!-- Senha -->
-            <div class="input-group">
-              <label for="senha">Senha</label>
-              <div class="password-wrapper">
-                <input
-                  type="password"
-                  id="senha"
-                  name="senha"
-                  placeholder="Crie uma senha"
-                  required
-                >
-                <button type="button" id="toggleSenha" class="toggle-password">
-                  Mostrar
-                </button>
-              </div>
-            </div>
-
-            <!-- Confirmar senha -->
-            <div class="input-group">
-              <label for="confirmarSenha">Confirmar senha</label>
-              <div class="password-wrapper">
-                <input
-                  type="password"
-                  id="confirmarSenha"
-                  name="confirmarSenha"
-                  placeholder="Repita sua senha"
-                  required
-                >
-                <button type="button" id="toggleConfirmarSenha" class="toggle-password">
-                  Mostrar
-                </button>
-              </div>
-            </div>
-
-            <!-- Botão -->
-            <button type="submit" class="btn-cadastro" id="btnCadastrar">
-              Cadastrar vendedor
-            </button>
-
-            <!-- Mensagem -->
-            <p id="mensagem-cadastro" class="mensagem-cadastro"></p>
-
-          </form>
-
-          <!-- Link login -->
-          <div class="register-link">
-            <p>Já possui conta? <a href="login.html">Entrar</a></p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-</body>
-</html>
+<div class="input-group">
+  <label for="gerente_id">ID do gerente</label>
+  <input type="number" id="gerente_id" name="gerente_id" placeholder="Opcional">
+</div>

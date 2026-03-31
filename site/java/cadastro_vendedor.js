@@ -3,15 +3,23 @@ const nomeInput = document.getElementById("nome");
 const emailInput = document.getElementById("email");
 const senhaInput = document.getElementById("senha");
 const confirmarSenhaInput = document.getElementById("confirmarSenha");
+const cpfInput = document.getElementById("cpf");
+const telefoneInput = document.getElementById("telefone");
+const enderecoInput = document.getElementById("endereco");
+const cepInput = document.getElementById("cep");
+const dataNascimentoInput = document.getElementById("data_nascimento");
+const codigoVendedorInput = document.getElementById("codigo_vendedor");
+const comissaoInput = document.getElementById("comissao_percentual");
+const metaMensalInput = document.getElementById("meta_mensal");
+const gerenteIdInput = document.getElementById("gerente_id");
+
 const mensagemCadastro = document.getElementById("mensagem-cadastro");
 const btnCadastrar = document.getElementById("btnCadastrar");
-
 const toggleSenha = document.getElementById("toggleSenha");
 const toggleConfirmarSenha = document.getElementById("toggleConfirmarSenha");
 
 toggleSenha.addEventListener("click", () => {
   const tipoAtual = senhaInput.getAttribute("type");
-
   if (tipoAtual === "password") {
     senhaInput.setAttribute("type", "text");
     toggleSenha.textContent = "Ocultar";
@@ -23,7 +31,6 @@ toggleSenha.addEventListener("click", () => {
 
 toggleConfirmarSenha.addEventListener("click", () => {
   const tipoAtual = confirmarSenhaInput.getAttribute("type");
-
   if (tipoAtual === "password") {
     confirmarSenhaInput.setAttribute("type", "text");
     toggleConfirmarSenha.textContent = "Ocultar";
@@ -40,6 +47,15 @@ form.addEventListener("submit", async (e) => {
   const email = emailInput.value.trim();
   const senha = senhaInput.value;
   const confirmarSenha = confirmarSenhaInput.value;
+  const cpf = cpfInput.value.trim();
+  const telefone = telefoneInput.value.trim();
+  const endereco = enderecoInput.value.trim();
+  const cep = cepInput.value.trim();
+  const data_nascimento = dataNascimentoInput.value;
+  const codigo_vendedor = codigoVendedorInput.value.trim();
+  const comissao_percentual = comissaoInput.value;
+  const meta_mensal = metaMensalInput.value.trim();
+  const gerente_id = gerenteIdInput.value.trim();
 
   mensagemCadastro.textContent = "";
   mensagemCadastro.className = "mensagem-cadastro";
@@ -68,14 +84,23 @@ form.addEventListener("submit", async (e) => {
       body: JSON.stringify({
         nome,
         email,
-        senha
+        senha,
+        cpf,
+        telefone,
+        endereco,
+        cep,
+        data_nascimento,
+        codigo_vendedor,
+        comissao_percentual,
+        meta_mensal: meta_mensal || null,
+        gerente_id: gerente_id || null
       })
     });
 
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.erro || "Erro ao cadastrar vendedor.");
+      throw new Error(data.erro || data.detalhes || "Erro ao cadastrar vendedor.");
     }
 
     mensagemCadastro.textContent = "Vendedor cadastrado com sucesso!";
@@ -86,7 +111,6 @@ form.addEventListener("submit", async (e) => {
     setTimeout(() => {
       window.location.href = "login.html";
     }, 1000);
-
   } catch (error) {
     mensagemCadastro.textContent = error.message;
     mensagemCadastro.classList.add("erro");

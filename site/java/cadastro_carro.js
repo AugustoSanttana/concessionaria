@@ -20,10 +20,13 @@ form.addEventListener("submit", async (event) => {
       body: formData
     });
 
-    const data = await response.json();
+    const contentType = response.headers.get("content-type") || "";
+    const data = contentType.includes("application/json")
+      ? await response.json()
+      : { erro: await response.text() };
 
     if (!response.ok) {
-      throw new Error(data.erro || "Erro ao cadastrar veículo.");
+      throw new Error(data.erro || data.detalhes || "Erro ao cadastrar veículo.");
     }
 
     mensagem.textContent = "Veículo cadastrado com sucesso!";
@@ -34,8 +37,8 @@ form.addEventListener("submit", async (event) => {
     setTimeout(() => {
       window.location.href = "home_vendedor.html";
     }, 1200);
-
   } catch (error) {
+    console.error("Erro no cadastro do veículo:", error);
     mensagem.textContent = error.message;
     mensagem.classList.add("erro");
   } finally {

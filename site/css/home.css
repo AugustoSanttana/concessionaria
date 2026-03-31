@@ -76,6 +76,10 @@ body {
   align-items:center;
 }
 
+.hero img {
+  mix-blend-mode: lighten;
+}
+
 .hero-inner{
   display:flex;
   align-items:center;

@@ -8,7 +8,6 @@ from sqlalchemy.exc import SQLAlchemyError
 class VendedorController:
 
     @staticmethod
-    @verificar_token
     def cadastrar_vendedor():
         try:
             if not getattr(request, "is_admin", False):
