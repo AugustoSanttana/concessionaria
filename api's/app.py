@@ -1,9 +1,8 @@
-from flask import Flask, request, send_from_directory
+from flask import Flask, request, send_from_directory, jsonify
 from src.config.data_base import db, init_db
 from src.routes import cliente_routes, vendedor_routes, veiculos_routes
 from flask_cors import CORS
 from flask_migrate import Migrate
-import pymysql
 import os
 
 def create_app():
@@ -17,17 +16,6 @@ def create_app():
         }
     })
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:mpfg2005@localhost/concessionaria_db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-    db_name = 'concessionaria_db'
-    conn = pymysql.connect(host='localhost', user='root', password='mpfg2005')
-    cursor = conn.cursor()
-    cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name}")
-    conn.commit()
-    cursor.close()
-    conn.close()
-
     init_db(app)
 
     @app.before_request
@@ -40,6 +28,10 @@ def create_app():
     app.register_blueprint(cliente_routes, url_prefix="/cliente")
     app.register_blueprint(vendedor_routes, url_prefix="/vendedor")
     app.register_blueprint(veiculos_routes, url_prefix="/veiculo")
+
+    @app.route('/')
+    def index():
+        return jsonify({"status": "API Concessionária Online", "versao": "1.0.0"}), 200
 
     @app.route('/uploads/<path:filename>')
     def uploaded_file(filename):
