@@ -3,15 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cadastro | São Paulo Customs</title>
+  <title>Cadastro de Vendedor | São Paulo Customs</title>
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/cadastro.css">
-  <script defer src="../java/cadastro.js"></script>
+  <link rel="stylesheet" href="../css/cadastro_vendedor.css">
+  <script defer src="../java/cadastro_vendedor.js"></script>
 </head>
 <body>
+
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
@@ -23,8 +24,6 @@
 
       <nav class="main-nav">
         <a href="home.html">Home</a>
-        <a href="compra.html">Compre</a>
-        <a href="aluguel.html">Alugue</a>
         <a href="login.html">Login</a>
       </nav>
     </div>
@@ -34,37 +33,47 @@
     <section class="cadastro-section container">
       <div class="cadastro-wrapper">
 
+        <!-- LADO ESQUERDO -->
         <div class="cadastro-info">
-          <p class="eyebrow">CRIE SUA CONTA</p>
-          <h1>Cadastre-se e tenha acesso à plataforma completa.</h1>
+          <p class="eyebrow">ÁREA DO VENDEDOR</p>
+
+          <h1>
+            Cadastre-se como vendedor e anuncie seus veículos.
+          </h1>
+
           <p class="description">
-            Faça seu cadastro para navegar pelos veículos, acompanhar anúncios
-            e acessar sua área exclusiva na São Paulo Customs.
+            Crie sua conta profissional para acessar a área do vendedor,
+            cadastrar carros e gerenciar seus anúncios na plataforma.
           </p>
 
           <div class="info-cards">
             <div class="mini-card">
-              <span>🚘</span>
-              <p>Acesse anúncios</p>
+              <span>🚗</span>
+              <p>Cadastre veículos</p>
             </div>
+
             <div class="mini-card">
-              <span>📋</span>
-              <p>Gerencie informações</p>
+              <span>📊</span>
+              <p>Gerencie anúncios</p>
             </div>
+
             <div class="mini-card">
-              <span>✨</span>
-              <p>Experiência premium</p>
+              <span>💼</span>
+              <p>Área exclusiva</p>
             </div>
           </div>
         </div>
 
+        <!-- LADO DIREITO -->
         <div class="cadastro-card">
           <div class="card-top">
-            <h2>Criar conta</h2>
-            <p>Preencha os dados abaixo para se cadastrar</p>
+            <h2>Criar conta de vendedor</h2>
+            <p>Preencha os dados abaixo para continuar</p>
           </div>
 
-          <form id="cadastro-form" class="cadastro-form">
+          <form id="cadastro-vendedor-form" class="cadastro-form">
+
+            <!-- Nome -->
             <div class="input-group">
               <label for="nome">Nome completo</label>
               <input
@@ -76,17 +85,19 @@
               >
             </div>
 
+            <!-- Email -->
             <div class="input-group">
               <label for="email">E-mail</label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="seuemail@dominio.com"
+                placeholder="seunome@vendedor"
                 required
               >
             </div>
 
+            <!-- Senha -->
             <div class="input-group">
               <label for="senha">Senha</label>
               <div class="password-wrapper">
@@ -103,6 +114,7 @@
               </div>
             </div>
 
+            <!-- Confirmar senha -->
             <div class="input-group">
               <label for="confirmarSenha">Confirmar senha</label>
               <div class="password-wrapper">
@@ -119,20 +131,25 @@
               </div>
             </div>
 
+            <!-- Botão -->
             <button type="submit" class="btn-cadastro" id="btnCadastrar">
-              Cadastrar
+              Cadastrar vendedor
             </button>
 
+            <!-- Mensagem -->
             <p id="mensagem-cadastro" class="mensagem-cadastro"></p>
+
           </form>
 
+          <!-- Link login -->
           <div class="register-link">
-            <p>Já tem uma conta? <a href="login.html">Entrar</a></p>
+            <p>Já possui conta? <a href="login.html">Entrar</a></p>
           </div>
         </div>
 
       </div>
     </section>
   </main>
+
 </body>
 </html>

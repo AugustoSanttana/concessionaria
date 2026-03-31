@@ -10,13 +10,15 @@
 }
 
 *{box-sizing:border-box}
-body{
-  margin:0;
-  color: var(--text);
-  background: #000000;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.45;
+body {
+  background:
+    radial-gradient(circle at top left, rgba(124, 58, 237, 0.20), transparent 25%),
+    radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.14), transparent 25%),
+    linear-gradient(180deg, #08080d 0%, #11111a 100%);
+    
+  color: #f5f5f7;
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
 }
 
 .carros{
@@ -29,13 +31,10 @@ body{
   padding:1rem;
 }
 
-.site-header{
-  height:90px;
-  border-bottom:1px solid rgba(255,255,255,0.04);
-  background:linear-gradient(180deg, #4f26e6, #35078a);
-  position:sticky;
-  top:0;
-  z-index:50;
+.site-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(8, 8, 13, 0.82);
+  backdrop-filter: blur(8px);
 }
 .header-inner{
   height:100%;
@@ -188,12 +187,18 @@ body{
 }
 
 /* CARDS DE CARRO */
-.car-card{
-  min-width:250px;
-  background:#111;
-  border-radius:10px;
-  padding:10px;
-  text-align:center;
+.car-card {
+  background: rgba(20, 20, 30, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 16px;
+  color: white;
+  transition: 0.25s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.25);
 }
 
 .car-card img{

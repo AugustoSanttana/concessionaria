@@ -1,4 +1,4 @@
-const form = document.getElementById("cadastro-form");
+const form = document.getElementById("cadastro-vendedor-form");
 const nomeInput = document.getElementById("nome");
 const emailInput = document.getElementById("email");
 const senhaInput = document.getElementById("senha");
@@ -50,11 +50,17 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
+  if (!email.toLowerCase().includes("@vendedor")) {
+    mensagemCadastro.textContent = "O e-mail do vendedor deve conter @vendedor.";
+    mensagemCadastro.classList.add("erro");
+    return;
+  }
+
   btnCadastrar.disabled = true;
   btnCadastrar.textContent = "Cadastrando...";
 
   try {
-    const response = await fetch("http://127.0.0.1:5000/cliente/cadastrar", {
+    const response = await fetch("http://127.0.0.1:5000/vendedor/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -69,10 +75,10 @@ form.addEventListener("submit", async (e) => {
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.erro || "Erro ao realizar cadastro.");
+      throw new Error(data.erro || "Erro ao cadastrar vendedor.");
     }
 
-    mensagemCadastro.textContent = "Cadastro realizado com sucesso!";
+    mensagemCadastro.textContent = "Vendedor cadastrado com sucesso!";
     mensagemCadastro.classList.add("sucesso");
 
     form.reset();
@@ -86,6 +92,6 @@ form.addEventListener("submit", async (e) => {
     mensagemCadastro.classList.add("erro");
   } finally {
     btnCadastrar.disabled = false;
-    btnCadastrar.textContent = "Cadastrar";
+    btnCadastrar.textContent = "Cadastrar vendedor";
   }
 });

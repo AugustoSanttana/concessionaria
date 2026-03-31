@@ -1,39 +1,120 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Barbearia</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login | São Paulo Customs</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="../css/login.css">
   <script defer src="../java/login.js"></script>
 </head>
 <body>
-  <h1 class="barber-name"> DREAM BARBER </h1>
-  
-  <div class="login-wrapper">
-    <img src="https://cdn-icons-png.flaticon.com/512/1085/1085825.png" alt="Tesoura" class="icon-left">
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="home.html" class="brand-link">
+          <span class="brand-script">São Paulo</span>
+          <span class="brand-title">Customs</span>
+        </a>
+      </div>
 
-    <div class="login-container">
-      <h2>Login</h2>
-      <form id="loginForm">
-        <div class="input-group">
-          <label for="email">Email</label>
-          <input type="text" id="email" name="email" placeholder="Digite seu Email" required>
-        </div>
-
-        <div class="input-group">
-          <label for="senha">Senha</label>
-          <input type="senha" id="senha" name="senha" placeholder="Digite sua senha" required>
-        </div>
-
-        <button type="submit">Entrar</button>
-        <p class="register-link">Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
-      </form>
+      <nav class="main-nav">
+        <a href="home.html">Home</a>
+        <a href="compra.html">Compre</a>
+        <a href="aluguel.html">Alugue</a>
+        <a href="cadastro.html">Cadastro</a>
+      </nav>
     </div>
+  </header>
 
-    <img src="https://cdn-icons-png.flaticon.com/512/1085/1085825.png" alt="Tesoura" class="icon-right">
-  </div>
+  <main class="login-page">
+    <section class="login-section container">
+      <div class="login-wrapper">
+        
+        <div class="login-info">
+          <p class="eyebrow">BEM-VINDO DE VOLTA</p>
+          <h1>Acesse sua conta e continue explorando os melhores carros.</h1>
+          <p class="description">
+            Entre na plataforma para visualizar veículos, acompanhar anúncios
+            e acessar sua área como cliente ou vendedor.
+          </p>
+
+          <div class="info-cards">
+            <div class="mini-card">
+              <span>🚗</span>
+              <p>Veículos exclusivos</p>
+            </div>
+            <div class="mini-card">
+              <span>🔒</span>
+              <p>Acesso seguro</p>
+            </div>
+            <div class="mini-card">
+              <span>⚡</span>
+              <p>Experiência rápida</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="login-card">
+          <div class="card-top">
+            <h2>Fazer login</h2>
+            <p>Digite seus dados para entrar na plataforma</p>
+          </div>
+
+          <form id="login-form" class="login-form">
+            <div class="input-group">
+              <label for="email">E-mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="seuemail@dominio.com"
+                required
+              >
+            </div>
+
+            <div class="input-group">
+              <label for="senha">Senha</label>
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  id="senha"
+                  name="senha"
+                  placeholder="Digite sua senha"
+                  required
+                >
+                <button type="button" id="toggleSenha" class="toggle-password">
+                  Mostrar
+                </button>
+              </div>
+            </div>
+
+            <div class="form-options">
+              <label class="remember">
+                <input type="checkbox" id="lembrar">
+                <span>Lembrar de mim</span>
+              </label>
+
+              <a href="#" class="forgot-link">Esqueci minha senha</a>
+            </div>
+
+            <button type="submit" class="btn-login" id="btnEntrar">
+              Entrar
+            </button>
+
+            <p id="mensagem-login" class="mensagem-login"></p>
+          </form>
+
+          <div class="register-link">
+            <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
 </body>
 </html>

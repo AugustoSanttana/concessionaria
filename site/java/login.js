@@ -1,66 +1,70 @@
-const urlLoginUsuario = 'http://127.0.0.1:5000/user_routes/login';
-const urlLoginCabeleireiro = 'http://127.0.0.1:5000/cabeleireiro/login';
+const form = document.getElementById("login-form");
+const emailInput = document.getElementById("email");
+const senhaInput = document.getElementById("senha");
+const mensagemLogin = document.getElementById("mensagem-login");
+const btnEntrar = document.getElementById("btnEntrar");
+const toggleSenha = document.getElementById("toggleSenha");
 
-async function login() {
-    let email = document.getElementById('email').value;
-    let senha = document.getElementById('senha').value;
+toggleSenha.addEventListener("click", () => {
+  const tipoAtual = senhaInput.getAttribute("type");
 
-    if (!email || !senha) {
-        alert("Preencha todos os campos.");
-        return;
+  if (tipoAtual === "password") {
+    senhaInput.setAttribute("type", "text");
+    toggleSenha.textContent = "Ocultar";
+  } else {
+    senhaInput.setAttribute("type", "password");
+    toggleSenha.textContent = "Mostrar";
+  }
+});
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = emailInput.value.trim();
+  const senha = senhaInput.value;
+
+  mensagemLogin.textContent = "";
+  mensagemLogin.className = "mensagem-login";
+
+  btnEntrar.disabled = true;
+  btnEntrar.textContent = "Entrando...";
+
+  const isVendedor = email.toLowerCase().includes("@vendedor");
+  const rotaLogin = isVendedor
+    ? "http://127.0.0.1:5000/vendedor/login"
+    : "http://127.0.0.1:5000/cliente/login";
+
+  try {
+    const response = await fetch(rotaLogin, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, senha })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.erro || "Erro ao fazer login.");
     }
 
-    async function tentarLogin(url, email, senha, tipo) {
-        try {
-            let response = await fetch(url, {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email, senha: senha })
-            });
+    mensagemLogin.textContent = "Login realizado com sucesso!";
+    mensagemLogin.classList.add("sucesso");
 
-            if (!response.ok) return null;
+    setTimeout(() => {
+      if (isVendedor) {
+        window.location.href = "home_vendedor.html";
+      } else {
+        window.location.href = "home.html";
+      }
+    }, 700);
 
-            let data = await response.json();
-            data.tipo = tipo;  
-            return data;
-        } catch (error) {
-            console.error(`Erro ao tentar login em ${url}:`, error);
-            return null;
-        }
-    }
-
-    let data = await tentarLogin(urlLoginUsuario, email, senha, "usuario");
-
-    if (!data) {
-        data = await tentarLogin(urlLoginCabeleireiro, email, senha, "cabeleireiro");
-    }
-
-    if (!data) {
-        alert("Credenciais inválidas");
-        return;
-    }
-
-    console.log("Resposta da API:", data);
-    alert("Login realizado com sucesso!");
-
-    if (data.token) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("tipoUsuario", data.tipo); 
-    }
-
-    if (data.nome && data.id) {
-        localStorage.setItem("usuario_nome", data.nome);
-        localStorage.setItem("usuario_id", data.id);
-    }
-
-    if (data.tipo === "cabeleireiro") {
-        window.location.href = '../html/home_cabeleireiro.html';
-    } else {
-        window.location.href = '../html/home_usuario.html';
-    }
-}
-
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    login();
+  } catch (error) {
+    mensagemLogin.textContent = error.message;
+    mensagemLogin.classList.add("erro");
+  } finally {
+    btnEntrar.disabled = false;
+    btnEntrar.textContent = "Entrar";
+  }
 });
