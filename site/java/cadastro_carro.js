@@ -1,0 +1,45 @@
+const API_BASE_URL = "http://127.0.0.1:5000";
+
+const form = document.getElementById("form-cadastro-carro");
+const mensagem = document.getElementById("mensagem");
+const btnSubmit = document.getElementById("btn-submit");
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  mensagem.textContent = "";
+  mensagem.className = "mensagem";
+  btnSubmit.disabled = true;
+  btnSubmit.textContent = "Cadastrando...";
+
+  try {
+    const formData = new FormData(form);
+
+    const response = await fetch(`${API_BASE_URL}/veiculo/compra/cadastrar`, {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.erro || "Erro ao cadastrar veículo.");
+    }
+
+    mensagem.textContent = "Veículo cadastrado com sucesso!";
+    mensagem.classList.add("sucesso");
+
+    form.reset();
+
+    setTimeout(() => {
+      window.location.href = "home_vendedor.html";
+    }, 1200);
+
+  } catch (error) {
+    mensagem.textContent = error.message;
+    mensagem.classList.add("erro");
+  } finally {
+    btnSubmit.disabled = false;
+    btnSubmit.textContent = "Cadastrar veículo";
+  }
+});

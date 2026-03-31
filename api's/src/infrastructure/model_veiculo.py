@@ -12,7 +12,7 @@ class VeiculoCompra(db.Model):
     cor = db.Column(db.String(50), nullable=False)
     combustivel = db.Column(db.String(50), nullable=False)
     categoria = db.Column(db.String(50), nullable=False)
-    parcelas = db.Column(db.Integer, nullable=False)
+    parcelas = db.Column(db.Integer, nullable=True)
     descricao = db.Column(db.Text, nullable=True)
     imagem_url = db.Column(db.String(255), nullable=True)
 

@@ -66,6 +66,10 @@ body{
   padding:0.45rem 0.75rem;border:1px solid rgba(0, 0, 0, 0.08);border-radius:8px;
   margin-left:1rem;
 }
+.btn-cadastro{
+  display:inline-block;background:var(--accent);color:#ffffff;padding:0.75rem 1rem;border-radius:10px;font-weight:700;text-decoration:none;
+  box-shadow:0 8px 22px rgba(196,154,108,0.12);
+}
 
 .hero{
   padding: 4rem 0;
@@ -183,3 +187,109 @@ body{
   border: 1px solid #ccc;
 }
 
+/* CARDS DE CARRO */
+.car-card{
+  min-width:250px;
+  background:#111;
+  border-radius:10px;
+  padding:10px;
+  text-align:center;
+}
+
+.car-card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.car-card h4{
+  margin:10px 0 5px;
+}
+
+.car-card p{
+  font-size:0.9rem;
+  color:#ccc;
+}
+
+.car-card .price{
+  display:block;
+  margin:10px 0;
+  font-weight:bold;
+}
+
+.car-card button{
+  background:#002df3;
+  color:#fff;
+  border:none;
+  padding:8px;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+/* CARROSSEL */
+.carousel{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:20px;
+}
+
+.carousel-track{
+  display:flex;
+  gap:15px;
+  overflow:hidden;
+  scroll-behavior:smooth;
+}
+
+/* BOTÕES */
+.carousel button{
+  background:#4f26e6;
+  color:#fff;
+  border:none;
+  font-size:24px;
+  cursor:pointer;
+  padding:10px;
+  border-radius:8px;
+}
+
+/* CARD */
+.car-card{
+  min-width:250px;
+  background:#111;
+  border-radius:10px;
+  padding:10px;
+  text-align:center;
+}
+
+.car-card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.car-card h4{
+  margin:10px 0 5px;
+}
+
+.car-card p{
+  font-size:0.9rem;
+  color:#ccc;
+}
+
+.car-card .price{
+  display:block;
+  margin:10px 0;
+  font-weight:bold;
+  color:#fff;
+}
+
+.car-card button{
+  background:#002df3;
+  color:#fff;
+  border:none;
+  padding:8px;
+  border-radius:5px;
+  cursor:pointer;
+}

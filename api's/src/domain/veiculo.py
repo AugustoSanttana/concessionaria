@@ -1,17 +1,16 @@
 class VeiculoCompraDomain:
-    def __init__(self, modelo, marca, ano, preco, quilometragem, cor, combustivel, categoria, parcelas, descricao=None, imagem_url=None):
+    def __init__(self, modelo, marca, ano, preco, quilometragem, cor, combustivel, categoria, parcelas=None, descricao=None, imagem_url=None):
         self.modelo = modelo
         self.marca = marca
         self.ano = ano
         self.preco = preco
         self.quilometragem = quilometragem
         self.cor = cor
-        self.combustivel = combustivel  # flex, gasolina, diesel, eletrico, hibrido
-        self.categoria = categoria  # sedan, hatch, suv, pickup, etc
+        self.combustivel = combustivel
+        self.categoria = categoria
         self.parcelas = parcelas
         self.descricao = descricao
         self.imagem_url = imagem_url
-        
 
     def to_dict(self):
         return{

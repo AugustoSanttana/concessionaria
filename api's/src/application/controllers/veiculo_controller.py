@@ -28,7 +28,7 @@ class VeiculoController:
             parcelas = data.get("parcelas")
             descricao = data.get("descricao")
 
-            if not all([modelo, marca, ano, preco, quilometragem, cor, combustivel, categoria, parcelas]):
+            if not all([modelo, marca, ano, preco, quilometragem, cor, combustivel, categoria]):
                 return make_response(jsonify({"erro": "Campos obrigatórios ausentes"}), 400)
 
             imagem_url = None
@@ -39,10 +39,17 @@ class VeiculoController:
                 imagem_url = f"/uploads/{filename}"
 
             veiculo = VeiculoService.create_veiculo_compra(
-                modelo=modelo, marca=marca, ano=int(ano),
-                preco=float(preco), quilometragem=quilometragem,
-                cor=cor, combustivel=combustivel, categoria=categoria,
-                parcelas=int(parcelas), descricao=descricao, imagem_url=imagem_url
+                modelo=modelo,
+                marca=marca,
+                ano=int(ano),
+                preco=float(preco),
+                quilometragem=quilometragem,
+                cor=cor,
+                combustivel=combustivel,
+                categoria=categoria,
+                parcelas=int(parcelas) if parcelas else None,
+                descricao=descricao,
+                imagem_url=imagem_url
             )
 
             return make_response(jsonify({

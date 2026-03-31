@@ -8,7 +8,7 @@ class VeiculoService:
     # ==================== COMPRA ====================
 
     @staticmethod
-    def create_veiculo_compra(modelo, marca, ano, preco, quilometragem, cor, combustivel, categoria, parcelas, descricao=None, imagem_url=None):
+    def create_veiculo_compra(modelo, marca, ano, preco, quilometragem, cor, combustivel, categoria, parcelas=None, descricao=None, imagem_url=None):
         domain = VeiculoCompraDomain(
             modelo=modelo, marca=marca, ano=ano, preco=preco,
             quilometragem=quilometragem, cor=cor, combustivel=combustivel,

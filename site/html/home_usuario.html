@@ -3,30 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dream Barber - Perfil</title>
+  <title>São Paulo Customs</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Montserrat:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/home.css">
+  <script defer src="../java/home.js"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
-        <div class="logo">DB</div>
         <div>
-          <h1>Dream Barber</h1>
-          <p class="tag">Corte, barba e estilo</p>
+          <h1>São Paulo Customs</h1>
         </div>
       </div>
       <nav class="main-nav">
         <a href="#inicio">Início</a>
-        <a href="produtos.html">Produtos</a>
-        <a href="perfil_usuario.html" class="btn-perfil">Perfil</a>
-        <a href="#servicos">Serviços</a>
-        <a href="agendamento.html" class="btn-perfil" id="linkAgenda">Agenda</a>
+        <a href="compra.html">Compre</a>
+        <a href="aluguel.html">Alugue</a>
         <a href="#contato" class="btn-outline">Contato</a>
         <a href="carrinho.html">Carrinho</a>
-        <button id="btnLogout" class="btn-outline">Sair</button>
       </nav>
     </div>
   </header>
@@ -35,191 +31,51 @@
     <section id="inicio" class="hero">
       <div class="container hero-inner">
         <div class="hero-text">
-          <h2>Bem-vindo à Dream Barber</h2>
-          <p>Atmosfera clássica, profissionais experientes e cortes que combinam com você.</p>
-          <a href="agendamento.html" class="btn-primary">Agende seu horário</a>
+          <h2>Bem-vindo à São Paulo Customs</h2>
+          <p>Atmosfera elite, profissionais experientes e carros dos seu sonhos.</p>
         </div>
         <div class="hero-image" aria-hidden="true"></div>
       </div>
     </section>
 
-    <section id="servicos" class="services container">
-      <h3 class="section-title">Nossos Serviços</h3>
-      <div class="grid-3">
-        <div class="card">
-          <h4>Corte Masculino</h4>
-          <p>Modelagem, aplicação de produtos e finalização personalizada.</p>
-          <span class="price">R$ 45</span>
-        </div>
-        <div class="card">
-          <h4>Barba Completa</h4>
-          <p>Barbeio, limpeza e hidratação da pele.</p>
-          <span class="price">R$ 30</span>
-        </div>
-        <div class="card">
-          <h4>Combo Corte + Barba</h4>
-          <p>Melhor custo-benefício, atendimento prioritário.</p>
-          <span class="price">R$ 70</span>
-        </div>
+<section id="carros" class="container">
+  <h3 class="section-title">Nossos Carros</h3>
+
+  <div class="carousel">
+    <button class="prev">‹</button>
+
+    <div class="carousel-track">
+
+      <div class="car-card">
+        <img src="../../api's/uploads/bmw-m3.avif">
+        <h4>BMW M3</h4>
+        <p>Motor 3.0 • 510cv • 2022</p>
+        <span class="price">R$ 450.000</span>
+        <button>Comprar</button>
       </div>
-    </section>
 
-    <section id="contato" class="contact container">
-      <h3 class="section-title">Contato</h3>
-      <div class="contact-grid">
-        <div>
-          <p><strong>Endereço:</strong> R. Cubatão, 726 - Vila Mariana, São Paulo - SP</p>
-          <p><strong>Horário:</strong> Ter-Sáb 09:00–19:00</p>
-          <p><strong>Telefone:</strong> (11) 9 9999-9999</p>
-        </div>
+      <div class="car-card">
+        <img src="../../api's/uploads/Audi.rs6.webp">
+        <h4>Audi RS6</h4>
+        <p>V8 Biturbo • 600cv</p>
+        <span class="price">R$ 720.000</span>
+        <button>Comprar</button>
       </div>
-    </section>
-  </main>
 
+      <div class="car-card">
+        <img src="../../api's/uploads/porsche.911.avif">
+        <h4>Porsche 911</h4>
+        <p>Turbo S • 650cv</p>
+        <span class="price">R$ 950.000</span>
+        <button>Comprar</button>
+      </div>
 
-  <!-- FOOTER COM AVALIAÇÃO -->
-  <footer class="avaliacao-container">
-    <h3>Avalie a Barbearia</h3>
-
-    <div class="usuario-info">
-        <span id="nomeUsuarioFooter"></span>
     </div>
 
-    <div class="stars" id="stars">
-        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-    </div>
-
-    <textarea id="comentario" placeholder="Escreva sua avaliação..." maxlength="300"></textarea>
-
-    <button id="btnEnviarAvaliacao">Enviar avaliação</button>
-
-    <p id="msgAvaliacao" class="msg"></p>
-
-    <div id="avaliacoesRecentes"></div>
-  </footer>
-
-  <!-- SCRIPT -->
-  <script>
-    const token = localStorage.getItem('token');
-    const usuarioNome = localStorage.getItem('usuario_nome') || "Usuário";
-
-    if (!token) {
-        alert("Você precisa estar logado para acessar esta página.");
-        window.location.href = 'login.html';
-    }
-
-    document.getElementById("nomeUsuarioFooter").innerText = "Usuário: " + usuarioNome;
-
-    document.getElementById('btnLogout').addEventListener('click', () => {
-        localStorage.removeItem('token');
-        alert("Você saiu com sucesso!");
-        window.location.href = 'login.html';
-    });
-
-    document.getElementById('linkAgenda').addEventListener('click', function(e) {
-        if (!token) {
-            e.preventDefault();
-            alert("Você precisa estar logado para acessar a agenda.");
-            window.location.href = 'login.html';
-        }
-    });
-
-
-/* =======================
-   SISTEMA DE AVALIAÇÃO
-======================= */
-
-let notaSelecionada = 0;
-
-const stars = document.querySelectorAll("#stars span");
-const msg = document.getElementById("msgAvaliacao");
-const areaAvaliacoes = document.getElementById("avaliacoesRecentes");
-
-// ⭐ Clicar nas estrelas
-stars.forEach((star, index) => {
-    star.addEventListener("click", () => {
-        notaSelecionada = index + 1;
-        stars.forEach((s, i) => s.style.color = i < notaSelecionada ? "gold" : "#ccc");
-    });
-});
-
-
-// ⭐ Enviar avaliação
-document.getElementById("btnEnviarAvaliacao").addEventListener("click", async () => {
-    const comentario = document.getElementById("comentario").value;
-
-    if (!notaSelecionada) {
-        msg.textContent = "Selecione uma nota.";
-        msg.style.color = "red";
-        return;
-    }
-
-    if (!comentario.trim()) {
-        msg.textContent = "Escreva um comentário.";
-        msg.style.color = "red";
-        return;
-    }
-
-    try {
-        const resp = await fetch("http://127.0.0.1:5000/avaliacao", {
-            method: "POST",
-            headers: { 
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                nota: notaSelecionada,
-                comentario: comentario
-            })
-        });
-
-        msg.textContent = "Avaliação enviada com sucesso!";
-        msg.style.color = "green";
-
-        adicionarAvaliacaoNoDom(usuarioNome, notaSelecionada, comentario);
-        document.getElementById("comentario").value = "";
-
-    } catch (error) {
-        msg.textContent = "Erro ao enviar avaliação.";
-        msg.style.color = "red";
-    }
-});
-
-
-// ⭐ Exibir avaliação recém-enviada
-function adicionarAvaliacaoNoDom(nome, nota, comentario) {
-    areaAvaliacoes.innerHTML += `
-        <div class="avaliacao-item">
-            <strong>${nome}</strong><br>
-            <span style="color: gold; font-size: 20px;">
-                ${"★".repeat(nota)}${"☆".repeat(5 - nota)}
-            </span>
-            <p>${comentario}</p>
-        </div>
-    `;
-}
-
-
-// ⭐ Carregar avaliações já existentes ao abrir a página
-async function carregarAvaliacoes() {
-    try {
-        const resp = await fetch("http://127.0.0.1:5000/avaliacao/listar");
-        const avaliacoes = await resp.json();
-
-        areaAvaliacoes.innerHTML = "";
-
-        avaliacoes.forEach(av => {
-            adicionarAvaliacaoNoDom(av.usuario, av.nota, av.comentario);
-        });
-
-    } catch (e) {
-        console.log("Erro ao carregar avaliações:", e);
-    }
-}
-
-carregarAvaliacoes();
-
-  </script>
+    <button class="next">›</button>
+  </div>
+</section>
+    
 
 </body>
 </html>
