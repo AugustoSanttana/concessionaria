@@ -3,19 +3,6 @@ const emailInput = document.getElementById("email");
 const senhaInput = document.getElementById("senha");
 const mensagemLogin = document.getElementById("mensagem-login");
 const btnEntrar = document.getElementById("btnEntrar");
-const toggleSenha = document.getElementById("toggleSenha");
-
-toggleSenha.addEventListener("click", () => {
-  const tipoAtual = senhaInput.getAttribute("type");
-
-  if (tipoAtual === "password") {
-    senhaInput.setAttribute("type", "text");
-    toggleSenha.textContent = "Ocultar";
-  } else {
-    senhaInput.setAttribute("type", "password");
-    toggleSenha.textContent = "Mostrar";
-  }
-});
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -30,6 +17,8 @@ form.addEventListener("submit", async (e) => {
   btnEntrar.textContent = "Entrando...";
 
   const isVendedor = email.toLowerCase().includes("@vendedor");
+
+  // 🔥 DEFINE A ROTA CERTA
   const rotaLogin = isVendedor
     ? "http://127.0.0.1:5000/vendedor/login"
     : "http://127.0.0.1:5000/cliente/login";
@@ -43,7 +32,10 @@ form.addEventListener("submit", async (e) => {
       body: JSON.stringify({ email, senha })
     });
 
-    const data = await response.json();
+    const contentType = response.headers.get("content-type") || "";
+    const data = contentType.includes("application/json")
+      ? await response.json()
+      : { erro: await response.text() };
 
     if (!response.ok) {
       throw new Error(data.erro || "Erro ao fazer login.");
@@ -52,11 +44,12 @@ form.addEventListener("submit", async (e) => {
     mensagemLogin.textContent = "Login realizado com sucesso!";
     mensagemLogin.classList.add("sucesso");
 
+    // 🔥 REDIRECIONAMENTO CORRETO
     setTimeout(() => {
       if (isVendedor) {
         window.location.href = "home_vendedor.html";
       } else {
-        window.location.href = "home.html";
+        window.location.href = "home_usuario.html";
       }
     }, 700);
 
