@@ -56,16 +56,39 @@ function criarCardCarro(carro) {
   const card = document.createElement("div");
   card.className = "car-card";
 
+  const imgUrl = montarImagem(carro.imagem_url);
+  const nomeCompleto = `${carro.marca} ${carro.modelo}`;
+  const precoFormatado = formatarPreco(carro.preco || 0);
+  const infoCarro = `${carro.combustivel || "Não informado"} • ${carro.quilometragem || "Não informado"} • ${carro.ano || "Ano não informado"}`;
+
   card.innerHTML = `
-    <img src="${montarImagem(carro.imagem_url)}" alt="${carro.marca} ${carro.modelo}">
-    <h4>${carro.marca} ${carro.modelo}</h4>
-    <p>${carro.combustivel || "Não informado"} • ${carro.quilometragem || "Não informado"} • ${carro.ano || "Ano não informado"}</p>
-    <span class="price">${formatarPreco(carro.preco || 0)}</span>
-    <button>Comprar</button>
+    <img src="${imgUrl}" alt="${nomeCompleto}">
+    <h4>${nomeCompleto}</h4>
+    <p>${infoCarro}</p>
+    <span class="price">${precoFormatado}</span>
+    <div class="card-buttons">
+      <button class="btn-detalhes">Ver Detalhes</button>
+      <button class="btn-comprar">Comprar</button>
+    </div>
   `;
+
+  card.querySelector(".btn-detalhes").addEventListener("click", () => {
+    irParaDetalhes(
+      nomeCompleto,
+      precoFormatado,
+      imgUrl,
+      infoCarro,
+      carro.descricao || "Veículo exclusivo disponível para venda na São Paulo Customs."
+    );
+  });
 
   return card;
 }
+
+window.irParaDetalhes = function(nome, preco, imagem, info, descricao) {
+  const params = new URLSearchParams({ nome, preco, imagem, info, descricao });
+  window.location.href = `detalhes.html?${params.toString()}`;
+};
 
 function renderizarCarrosFixos() {
   carrosFixos.forEach((carro) => {

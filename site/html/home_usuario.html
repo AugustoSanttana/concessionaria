@@ -75,7 +75,23 @@
     <button class="next">›</button>
   </div>
 </section>
-    
 
+  <div id="meuModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="fecharModal()">&times;</span>
+      <h2 id="modal-titulo"></h2>
+      <p id="modal-descricao"></p>
+    </div>
+  </div>
+
+  <script>
+    function abrirModal(t, d) {
+      document.getElementById('modal-titulo').innerText = t;
+      document.getElementById('modal-descricao').innerText = d;
+      document.getElementById('meuModal').style.display = 'block';
+    }
+    function fecharModal() { document.getElementById('meuModal').style.display = 'none'; }
+  </script>
+    
 </body>
 </html>

@@ -71,20 +71,35 @@ async function carregarProdutos() {
                         Quantidade:
                         <input type="number" min="1" value="1" class="produto-qtd-input">
                     </label>
-                    <button class="btn-add-carrinho">Adicionar ao carrinho</button>
+                    <div class="produto-acoes">
+                        <button class="btn-detalhes">Ver Detalhes</button>
+                        <button class="btn-add-carrinho">Adicionar ao carrinho</button>
+                    </div>
                 </div>
             `;
 
-            const btn = card.querySelector('.btn-add-carrinho');
+            const btnAdd = card.querySelector('.btn-add-carrinho');
+            const btnDet = card.querySelector('.btn-detalhes');
             const inputQtd = card.querySelector('.produto-qtd-input');
 
-            btn.addEventListener('click', () => {
+            btnAdd.addEventListener('click', () => {
                 const qtd = parseInt(inputQtd.value, 10);
                 if (isNaN(qtd) || qtd <= 0) {
                     alert('Informe uma quantidade válida.');
                     return;
                 }
                 adicionarAoCarrinho(produto, qtd);
+            });
+
+            btnDet.addEventListener('click', () => {
+                const params = new URLSearchParams({
+                    nome: produto.nome,
+                    preco: `R$ ${Number(produto.preco).toFixed(2)}`,
+                    imagem: imgSrc,
+                    info: "Categoria: Produto Automotivo",
+                    descricao: produto.descricao || "Produto premium disponível na São Paulo Customs para manutenção e estética do seu veículo."
+                });
+                window.location.href = `detalhes.html?${params.toString()}`;
             });
 
             container.appendChild(card);

@@ -215,6 +215,7 @@ body {
 .car-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 25px rgba(124, 58, 237, 0.25);
+  z-index: 10;
 }
 
 .car-card img{
@@ -239,16 +240,34 @@ body {
   font-weight:bold;
 }
 
-.car-card button{
-  background:#002df3;
-  color:#fff;
-  border:none;
-  padding:8px;
-  border-radius:5px;
-  cursor:pointer;
+.car-card .card-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
 }
 
-/* CARROSSEL */
+.car-card .card-buttons button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: opacity 0.2s;
+}
+
+.btn-comprar {
+  background: #002df3;
+  color: #fff;
+}
+
+.btn-detalhes {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .carousel{
   display:flex;
   align-items:center;
@@ -264,7 +283,7 @@ body {
 }
 
 /* BOTÕES */
-.carousel button{
+.carousel button {
   background:#4f26e6;
   color:#fff;
   border:none;
@@ -272,45 +291,4 @@ body {
   cursor:pointer;
   padding:10px;
   border-radius:8px;
-}
-
-/* CARD */
-.car-card{
-  min-width:250px;
-  background:#111;
-  border-radius:10px;
-  padding:10px;
-  text-align:center;
-}
-
-.car-card img{
-  width:100%;
-  height:150px;
-  object-fit:cover;
-  border-radius:8px;
-}
-
-.car-card h4{
-  margin:10px 0 5px;
-}
-
-.car-card p{
-  font-size:0.9rem;
-  color:#ccc;
-}
-
-.car-card .price{
-  display:block;
-  margin:10px 0;
-  font-weight:bold;
-  color:#fff;
-}
-
-.car-card button{
-  background:#002df3;
-  color:#fff;
-  border:none;
-  padding:8px;
-  border-radius:5px;
-  cursor:pointer;
 }

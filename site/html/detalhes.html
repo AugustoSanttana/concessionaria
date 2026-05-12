@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Detalhes - São Paulo Customs</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Montserrat:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/home.css">
+  <script defer src="../java/detalhes.js"></script>
+  <style>
+    .detalhes-container {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+      margin-top: 50px;
+      background: rgba(20, 20, 30, 0.6);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .detalhes-imagem { width: 50%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .detalhes-info { flex: 1; }
+    .detalhes-info h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 10px; }
+    .detalhes-info .tag { color: #7c3aed; font-weight: bold; margin-bottom: 20px; display: block; }
+    .detalhes-info .preco-grande { font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 20px; display: block; }
+    .detalhes-info p { line-height: 1.8; color: #ccc; margin-bottom: 30px; }
+    .btn-voltar { background: transparent; border: 1px solid #7c3aed; color: #fff; padding: 10px 20px; border-radius: 8px; cursor: pointer; margin-bottom: 20px; display: inline-block; text-decoration: none; }
+    @media (max-width: 768px) { .detalhes-container { flex-direction: column; } .detalhes-imagem { width: 100%; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand"><h1>São Paulo Customs</h1></div>
+      <nav class="main-nav"><a href="home.html">Voltar para Home</a></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="javascript:history.back()" class="btn-voltar">← Voltar</a>
+    <div class="detalhes-container">
+      <img id="det-img" src="" alt="" class="detalhes-imagem">
+      <div class="detalhes-info">
+        <span id="det-info" class="tag"></span>
+        <h2 id="det-nome"> Carregando...</h2>
+        <span id="det-preco" class="preco-grande"></span>
+        <p id="det-descricao"></p>
+        <button class="btn-primary" style="width: 100%;">Solicitar Proposta</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
