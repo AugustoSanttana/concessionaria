@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Meu Veículo | São Paulo Customs</title>
+
+  <link rel="stylesheet" href="../css/seu_veiculo.css">
+  <script defer src="../java/seu_veiculo.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <h1>São Paulo Customs</h1>
+
+    <nav>
+      <a href="home_usuario.html">Home</a>
+      <a href="seu_veiculo.html" class="active">Seu Veículo</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section class="form-section">
+
+      <div class="title-area">
+        <h2>Cadastre seu veículo</h2>
+        <p>Adicione as informações do seu carro pessoal.</p>
+      </div>
+
+      <form id="veiculo-form">
+
+        <div class="input-group">
+          <label>Modelo</label>
+          <input type="text" id="modelo" required>
+        </div>
+
+        <div class="input-group">
+          <label>Marca</label>
+          <input type="text" id="marca" required>
+        </div>
+
+        <div class="input-group">
+          <label>Ano</label>
+          <input type="number" id="ano" required>
+        </div>
+
+        <div class="input-group">
+          <label>Foto do veículo</label>
+          <input type="file" id="foto" accept="image/*" required>
+        </div>
+
+        <button type="submit">
+          Cadastrar Veículo
+        </button>
+
+      </form>
+
+    </section>
+
+    <section class="veiculos-section">
+
+      <div class="title-area">
+        <h2>Meus Veículos</h2>
+      </div>
+
+      <div class="veiculos-grid" id="veiculos-grid">
+
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
