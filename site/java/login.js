@@ -18,7 +18,6 @@ form.addEventListener("submit", async (e) => {
 
   const isVendedor = email.toLowerCase().includes("@vendedor");
 
-  // 🔥 DEFINE A ROTA CERTA
   const rotaLogin = isVendedor
     ? "http://127.0.0.1:5000/vendedor/login"
     : "http://127.0.0.1:5000/cliente/login";
@@ -41,10 +40,15 @@ form.addEventListener("submit", async (e) => {
       throw new Error(data.erro || "Erro ao fazer login.");
     }
 
+    // ✅ SALVA O TOKEN E DADOS DO USUÁRIO NO localStorage
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("usuario_id", data.id);
+    localStorage.setItem("usuario_nome", data.nome);
+    localStorage.setItem("tipo_usuario", isVendedor ? "vendedor" : "cliente");
+
     mensagemLogin.textContent = "Login realizado com sucesso!";
     mensagemLogin.classList.add("sucesso");
 
-    // 🔥 REDIRECIONAMENTO CORRETO
     setTimeout(() => {
       if (isVendedor) {
         window.location.href = "home_vendedor.html";

@@ -1,6 +1,7 @@
 from src.application.controllers.user_controller import UserController
 from src.application.controllers.veiculo_controller import VeiculoController
 from src.application.controllers.vendedor_controller import VendedorController
+from src.application.controllers.proposta_controller import PropostaController
 from flask import jsonify, make_response, send_from_directory
 from flask import Blueprint
 from flask import request
@@ -29,6 +30,10 @@ def login_cliente():
 @cliente_routes.route("/perfil", methods=["GET"])
 def perfil_cliente():
     return UserController.perfil_usuario()
+
+@cliente_routes.route("/proposta", methods=["POST"])
+def solicitar_proposta():
+    return PropostaController.solicitar_proposta()
 
 #-------------------------------------#
 # VENDEDOR
